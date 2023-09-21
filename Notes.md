@@ -548,8 +548,8 @@ Example:
         int blah = *ptr;
         ```
     - Double meaning of *:
-        - * used in a declaration creates a pointer
-        - * not used in a declaration is a dereference operator
+        - \* used in a declaration creates a pointer
+        - \* not used in a declaration is a dereference operator
 - Memory allocation at runtime
     - new and delete operators in C++ dynamically allocate memory required during runtime to avoid wastege of memory
         ```
