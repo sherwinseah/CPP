@@ -466,5 +466,105 @@ Example:
         // any final cleanup
     }
     ```
+### 4 Benefits of OOP
+- Encapsulation: in OOP, you bundle code into a single unit where you can determine the scope of each piece of data.
+- Abstraction: by using classes, you are able to generalize your object types, simplifying your program.
+- Inheritance: because a class can inherit attributes and behaviors from another class, you are able to reuse more code.
+- Polymorphism: one class can be used to create many objects, all from the same flexible piece of code.
 
+## References and Pointers
+- Allows the direct manipulation of memory to optimize performance
+- References
+    - If we already have an int x, we can create an alias to it using the & sign
+        ```
+        int &y = x;
+        ```
+    - Any changes to y, x also changes. Anything we do to reference also happens to the original
+    - Aliases cannot be changed to alias something else
+    - Allow us to pass reference variables into a function and directly modify the function arguments while not making copies of the variables for performance reasons
+        ```
+        void swap_num(int &i, int &j) {
 
+            int temp = i;
+            i = j;
+            j = temp;
+
+        }
+
+        int main() {
+
+            int a = 100;
+            int b = 200;
+
+            swap_num(a, b);
+
+            std::cout << "A is " << a << "\n";
+            std::cout << "B is " << b << "\n";
+
+        }
+        ```
+        ```
+        Output: A is 200 \n B is 100
+        ```
+    - const used to tell compiler that the variable will not be changed
+        ```
+        double const pi = 3.14;
+        ```
+        ```
+        int triple(int const &i){ // parameter wont change inside the function
+            return i*3;
+        }
+        ```
+- Memory
+    - & symbol can have another meaning, the 'address of' operator to get the memory address i.e. location in memory
+        ```
+        std::cout << &count << "\n"; 
+        ```
+        ```
+        Returns something like: 0x7f7caa9d807 // memory address represented in hexadecimal
+        ```
+    - Double meaning of &:
+        - When & is used in a declaration, it is a reference operator
+        - When & is not used in a declaration, it is an address operator
+- Pointers
+    - Pointer variable is mostly the same as other variables which can store a piece of data. Instead of storing int, double, etc, it stores a memory address
+    - They must be declared syntactically with * eg. int* means 'pointer to int'
+        ```
+        int gum = 0
+        int* ptr = &gum
+        ```
+    - It is dangerous to initialize a pointer without assigning it a valid address
+        ```
+        //DO NOT DO THIS
+        int* ptr;
+        ```
+    - If we do not know where we are pointing to, use a null pointer 
+        ```
+        int* ptr = nullptr; // nullptr is a keyword for C++ 11 and above, else use NULL
+        ```
+- Dereference
+    - To obtain the value pointed to by the pointer
+        ```
+        int blah = *ptr;
+        ```
+    - Double meaning of *:
+        - * used in a declaration creates a pointer
+        - * not used in a declaration is a dereference operator
+- Memory allocation at runtime
+    - new and delete operators in C++ dynamically allocate memory required during runtime to avoid wastege of memory
+        ```
+        int main() {
+  
+            // memory allocation
+            ptr = new int[num];
+
+            ...
+
+            // memory is released
+            delete ptr;
+
+        }
+        ```
+    - Standard Library Smart Pointers is an abstract data type to provide automatic memory management to new and delete
+        - unique_ptr: owns and manage another object through and disposes of that object when the unique_ptr goes out of scope
+        - shared_ptr: retains shared ownership of an object through a pointer. Several shared_ptr objects may own the same object
