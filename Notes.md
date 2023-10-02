@@ -568,3 +568,18 @@ Example:
     - Standard Library Smart Pointers is an abstract data type to provide automatic memory management to new and delete
         - unique_ptr: owns and manage another object through and disposes of that object when the unique_ptr goes out of scope
         - shared_ptr: retains shared ownership of an object through a pointer. Several shared_ptr objects may own the same object
+
+## Package installations
+- VCPKG manages C++ libraries
+    - Install using instructions on https://github.com/Microsoft/vcpkg#quick-start-windows
+    - Used Developer Command Prompt for VS 2022 to run the lines of installation codes
+    - After running the installation codes, run: 
+        ```
+        vcpkg integrate install
+        ```
+    - When installing new libraries using VCPKG, use normal command prompt, use correct triplets: close IDE, static/dynamic linking, 32/64 bit
+        ```
+        cd vcpkg
+        ./vcpkg install cpr:x64-windows
+        ./vcpkg integrate install
+        ```
